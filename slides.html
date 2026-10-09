@@ -96,8 +96,9 @@
   .slide input[type=text],.slide textarea{font-size:18px}
   .on .reveal{animation-play-state:running}
   @media (max-width:760px){.slide{padding:4vh 5vw 70px;overflow:auto;justify-content:flex-start}.cols.two,.vs{grid-template-columns:1fr}.vs .mid{text-align:center}.hud{font-size:12px}}
+  .slide .cols .box:has(.stat){display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 22px}.slide .cols .box .stat small{font-size:clamp(18px,1.8vw,26px);color:var(--ink);margin:14px auto 0;max-width:24ch;line-height:1.3}.slide.ink .cols .box .stat small{color:#E8E5DD}.slide.accent .cols .box .stat small{color:#FFD2D2}
   @media (prefers-reduced-motion: reduce){.draw,.typing,.pages span,.bgart .orb,.slide.on{animation:none;opacity:1;stroke-dashoffset:0;width:auto}}
-.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:6px 0 14px}.tl div{height:14px;border-radius:7px;background:var(--line);transition:background .3s,transform .3s}.tl div.on{background:var(--accent);transform:scaleY(1.6)}
+.slide .cols .box:has(.stat){display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 22px}.slide .cols .box .stat small{font-size:clamp(18px,1.8vw,26px);color:var(--ink);margin:14px auto 0;max-width:24ch;line-height:1.3}.slide.ink .cols .box .stat small{color:#E8E5DD}.slide.accent .cols .box .stat small{color:#FFD2D2}.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:6px 0 14px}.tl div{height:14px;border-radius:7px;background:var(--line);transition:background .3s,transform .3s}.tl div.on{background:var(--accent);transform:scaleY(1.6)}
 </style>
 </head>
 <body>
@@ -146,9 +147,9 @@
   <div class="eyebrow reveal">The next 45 minutes</div>
   <h2 class="reveal">One conversation, one list, one message.</h2>
   <div class="cols">
-    <div class="box reveal"><p class="stat" style="font-size:clamp(40px,5vw,72px)">1<small>idea: ask for advice, never for a job</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(40px,5vw,72px)">5<small>names on a target list you build today</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(40px,5vw,72px)">1<small>message under 100 words, sent this week</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(60px,7.5vw,120px)">1<small>Ask for advice, never for a job</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(60px,7.5vw,120px)">5<small>Build a target list of five names today</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(60px,7.5vw,120px)">1<small>Send one message under 100 words this week</small></p></div>
   </div>
   <p class="lead reveal" style="margin-top:22px">Bring one job title to mind now: the role you would want in two years. Everything today points at that role.</p>
 </section>
@@ -180,7 +181,7 @@
       <input type="text" data-store="ask1" placeholder="I&#x27;m a second-year computer science student at Illinois Tech, and I saw you moved from a co-op at Motorola into security engineering…">
       <label>Sentence 2: the ask (20 minutes, one topic, their convenience)</label>
       <input type="text" data-store="ask2" placeholder="Could I have 20 minutes in the next two weeks to ask how you made that move?">
-      <p class="quiet">Two minutes of silence. A volunteer reads theirs; we type it here.</p>
+      <p class="quiet">Write in silence for two minutes. Then one volunteer reads theirs aloud and we type it here.</p>
     </div>
     <div class="box reveal"><p class="quiet" style="margin:0 0 8px">Live preview</p><div class="preview" id="aboutPreview" style="font-size:clamp(18px,2vw,26px);font-family:var(--serif)">Your ask will appear here.</div><p><button class="btn small" onclick="PW.copy(document.getElementById('aboutPreview').textContent)">Copy</button></p></div>
   </div>
@@ -242,9 +243,9 @@
   <div class="eyebrow reveal">You know more people than you think</div>
   <h2 class="reveal">Your network already exists. It just isn't written down.</h2>
   <div class="cols">
-    <div class="box reveal"><p class="stat" style="font-size:clamp(36px,4.6vw,64px)">Class<small>professors, TAs, IPRO teammates, guest lecturers, lab partners' internships</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(36px,4.6vw,64px)">Elevate<small>the Alumni Mentorship Program, Illinois Tech Connect, and the Informational Interviews elective that counts toward your checklist</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(36px,4.6vw,64px)">Life<small>family, former managers, coaches, club advisers, the parent of a friend</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(44px,5.2vw,80px)">Class<small>Ask professors, TAs, IPRO teammates, and guest lecturers for one name each</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(44px,5.2vw,80px)">Elevate<small>Apply to the Alumni Mentorship Program; log your conversations in the Informational Interviews elective</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(44px,5.2vw,80px)">Life<small>List family, former managers, coaches, club advisers, and friends' parents</small></p></div>
   </div>
   <div class="ask reveal" style="margin-top:18px">Ask the room</div>
   <p class="lead reveal">Name one person you talked to this semester who works somewhere you'd want to work.</p>
@@ -273,7 +274,7 @@
   <div class="eyebrow reveal">0:41 · Before you leave</div>
   <h2 class="reveal">What leaves the room with you.</h2>
   <div class="cols two">
-    <div class="box reveal"><div class="check"><input type="checkbox" data-store="c1" id="c1"><label for="c1">Two-sentence ask drafted (Who, Why, What)</label></div><div class="check"><input type="checkbox" data-store="c2" id="c2"><label for="c2">Five target names listed, at least two Illinois Tech alumni</label></div><div class="check"><input type="checkbox" data-store="c3" id="c3"><label for="c3">One outreach message written, under 100 words</label></div><div class="check"><input type="checkbox" data-store="c4" id="c4"><label for="c4">Three questions a job posting cannot answer</label></div><div class="check"><input type="checkbox" data-store="c5" id="c5"><label for="c5">Follow-up date set (same day as the conversation)</label></div><div class="check"><input type="checkbox" data-store="c6" id="c6"><label for="c6">One-on-one booked to review the message before sending</label></div></div>
+    <div class="box reveal"><div class="check"><input type="checkbox" data-store="c1" id="c1"><label for="c1">Draft your two-sentence ask (Who, Why, What)</label></div><div class="check"><input type="checkbox" data-store="c2" id="c2"><label for="c2">List five target names, at least two Illinois Tech alumni</label></div><div class="check"><input type="checkbox" data-store="c3" id="c3"><label for="c3">Write one outreach message under 100 words</label></div><div class="check"><input type="checkbox" data-store="c4" id="c4"><label for="c4">Write three questions a job posting cannot answer</label></div><div class="check"><input type="checkbox" data-store="c5" id="c5"><label for="c5">Set a follow-up date (same day as the conversation)</label></div><div class="check"><input type="checkbox" data-store="c6" id="c6"><label for="c6">Book a one-on-one to review the message before you send it</label></div></div>
     <div class="box reveal"><p class="quiet" style="margin:0 0 6px">Keep going</p><p>Book a one-on-one: <a id="bookLink" href="#">30 minutes with Career Services</a></p><p><a href="https://elevate.iit.edu/experiences/informational-interviews/">Informational Interviews elective</a> · <a href="https://elevate.iit.edu/resources/illinois-tech-mentorship-program/">Alumni Mentorship Program</a> · <a href="https://illinoistechconnect.iit.edu/">Illinois Tech Connect</a></p></div>
   </div>
 </section>
