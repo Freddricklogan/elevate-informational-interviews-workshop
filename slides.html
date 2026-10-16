@@ -12,7 +12,7 @@
   .deck{position:relative;height:100vh;width:100vw}
   .bgart{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
   .bgart .orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
-  .bgart .o1{width:48vw;height:48vw;right:-12vw;top:-18vw;background:radial-gradient(closest-side,var(--accent-soft),transparent 70%)}
+  .bgart .o1{width:48vw;height:48vw;right:-12vw;top:-18vw;background:radial-gradient(closest-side,rgba(118,119,123,.14),transparent 70%)}
   .bgart .o2{width:36vw;height:36vw;left:-10vw;bottom:-14vw;background:radial-gradient(closest-side,rgba(255,153,0,.10),transparent 70%);animation-delay:-9s}
   .bgart .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.28;mask-image:radial-gradient(ellipse at 70% 30%,#000 0%,transparent 70%)}
   .slide{position:absolute;inset:0;display:none;padding:5vh 7vw 70px;flex-direction:column;justify-content:center;z-index:1;overflow:auto}
@@ -75,7 +75,7 @@
   .cs .ttl{font-family:var(--serif);font-weight:600;font-size:clamp(18px,1.9vw,26px);color:var(--ink);margin:0 0 10px;line-height:1.15}
   .cs .f{display:grid;grid-template-columns:86px 1fr;gap:6px 10px;font-size:clamp(13px,1.15vw,16px);line-height:1.35;margin:0 0 6px}
   .cs .f b{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding-top:3px}
-  .cs .f .num{background:var(--accent-soft);color:var(--accent);font-weight:700;padding:0 5px;border-radius:5px}
+  .cs .f .num{color:var(--accent);font-weight:700;border-bottom:2px solid var(--accent)}
   .cs .visual{background:var(--surface-2);border-left:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;gap:8px}
   .cs .visual svg{width:100%;height:auto;max-height:150px}
   .cs .visual small{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
@@ -99,6 +99,71 @@
   .slide .cols .box:has(.stat){display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 22px}.slide .cols .box .stat small{font-size:clamp(18px,1.8vw,26px);color:var(--ink);margin:14px auto 0;max-width:24ch;line-height:1.3}.slide.ink .cols .box .stat small{color:#E8E5DD}.slide.accent .cols .box .stat small{color:#FFD2D2}
   @media (prefers-reduced-motion: reduce){.draw,.typing,.pages span,.bgart .orb,.slide.on{animation:none;opacity:1;stroke-dashoffset:0;width:auto}}
 .slide .cols .box:has(.stat){display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 22px}.slide .cols .box .stat small{font-size:clamp(18px,1.8vw,26px);color:var(--ink);margin:14px auto 0;max-width:24ch;line-height:1.3}.slide.ink .cols .box .stat small{color:#E8E5DD}.slide.accent .cols .box .stat small{color:#FFD2D2}.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:6px 0 14px}.tl div{height:14px;border-radius:7px;background:var(--line);transition:background .3s,transform .3s}.tl div.on{background:var(--accent);transform:scaleY(1.6)}
+  .slide .formula{font-size:clamp(14px,min(1.35vw,2.3vh),19px);margin:6px 0 10px}
+  .ink .formula{background:#1B1B20;border-color:#2B2B31;border-left-color:#FF4A4A;color:#E8E5DD}.ink .formula .b{background:#2B2B31;color:#C9C6BE}.ink .formula .eg{color:#9A9A9F}
+  .slide p.timer{font-size:clamp(44px,min(8vw,13vh),120px);line-height:1;margin:0 0 10px}
+/* 2026-10 QA pass: never clip tall slides, fit short screens, photo layouts */
+.slide{justify-content:safe center}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,34%);gap:clamp(24px,4vw,64px);align-items:center}
+.split.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.split > *{min-width:0}
+.split h2{max-width:24ch}
+.photo{position:relative;margin:0;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);background:var(--surface-2);aspect-ratio:4/5;max-height:66vh;width:100%}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo.wide{aspect-ratio:16/7;max-height:none;border-radius:12px;box-shadow:none}
+.credit{position:absolute;left:10px;bottom:8px;font-size:11px;line-height:1.4;color:#fff;background:rgba(0,0,0,.5);padding:2px 9px;border-radius:999px;text-decoration:none;z-index:2}
+.credit a{color:#fff;text-decoration:none}
+.credit.top{top:10px;bottom:auto}
+.slide.has-bg{isolation:isolate}
+.bgphoto{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center}
+.slide > .credit{left:auto;right:18px;bottom:46px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:10px 0 18px}
+.duo .box{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:20px 22px}
+.duo svg{width:52px;height:52px;flex:none}
+.duo .stat{font-size:clamp(46px,min(6vw,11vh),92px)!important;margin:4px 0 0}
+.duo .stat small{margin-top:8px;font-size:clamp(15px,1.4vw,19px);color:var(--body)}
+.duo .unit{font-family:var(--sans);font-size:.36em;color:var(--muted);margin-left:6px;letter-spacing:0}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.steps button{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:6px 14px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px 16px;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
+.steps button:hover{border-color:var(--muted)}
+.steps .n{grid-row:1/3;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);color:var(--muted);font-weight:700;font-size:15px}
+.steps .t{font-weight:600;font-size:clamp(16px,min(1.6vw,2.6vh),21px)}
+.steps .m{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.steps .key{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-left:8px;vertical-align:2px}
+.steps .meter{grid-column:2/4;height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden}
+.steps .meter i{display:block;height:100%;background:var(--gray);opacity:.45;transition:background .2s,opacity .2s}
+.steps button.on{border-color:var(--accent);background:var(--surface);box-shadow:inset 4px 0 0 var(--accent)}
+.steps button.on .n{background:var(--accent);color:#fff}
+.steps button.on .meter i{background:var(--accent);opacity:1}
+.detail{position:relative}
+.detail .photo{aspect-ratio:4/5;max-height:62vh}
+.detail .card2{position:absolute;left:14px;right:14px;bottom:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);z-index:2}
+.detail .card2 .lead{margin:0;font-size:clamp(16px,min(1.7vw,2.7vh),22px)}
+.detail .card2 h3{font-family:var(--serif);font-size:clamp(20px,min(2vw,3.2vh),28px);margin:0 0 4px;color:var(--ink)}
+.detail .card2 .quiet{margin:6px 0 0}
+@media (max-height:920px){
+  .slide{padding-top:4vh;padding-bottom:58px}
+  .slide h1{font-size:clamp(40px,10vh,96px)}
+  .slide h2{font-size:clamp(28px,6.2vh,56px)}
+  .slide .lead{font-size:clamp(17px,2.7vh,26px)}
+  .slide p,.slide li,.slide label{font-size:clamp(15px,2.35vh,22px)}
+  .slide .cols .box:has(.stat){padding:18px 18px}
+  .slide .cols .box .stat small{font-size:clamp(15px,2.3vh,22px)}
+  .check{padding:5px 0}
+  .ask{margin:4px 0 8px}
+  .photo.wide{aspect-ratio:16/5.5}
+  .cs{grid-template-columns:1fr}.cs .visual{display:none}
+  .cs .f{line-height:1.28;margin:0 0 4px}
+  .cs .body{padding:14px 18px}
+  .seq .step{padding:8px 0}
+}
+@media (max-height:760px){
+  .slide h2{font-size:clamp(26px,5.6vh,44px);margin-bottom:8px}
+  .photo.wide{aspect-ratio:16/4.2}
+  .slide .cols{margin-top:8px}
+  .slide .cols .box:has(.stat){padding:14px 16px}
+}
+@media (max-width:760px){.split,.split.even,.duo{grid-template-columns:1fr}.photo{max-height:40vh}.detail .card2{position:static;margin-top:10px}.slide > .credit{bottom:52px}}
 </style>
 </head>
 <body>
@@ -107,7 +172,9 @@
 <div class="deck" id="deck">
 
 <!-- 1 Title -->
-<section class="slide on accent">
+<section class="slide on accent has-bg">
+  <div class="bgphoto" style="background-image:linear-gradient(135deg,rgba(204,0,0,.93) 0%,rgba(140,0,0,.9) 100%),url('https://images.unsplash.com/photo-1581373449483-37449f962b6c?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8NHx8Q2hpY2FnbyUyMHNreWxpbmV8ZW58MXwwfHx8MTc5MjE2MTI3OHwy&ixlib=rb-4.1.0&w=1920&q=75&auto=format&fit=crop')"></div>
+  <span class="credit">Photo: <a href="https://unsplash.com/@maxwbender?utm_source=elevate_workshops&amp;utm_medium=referral">Max Bender</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span>
   <img class="reveal" src="assets/elevate-logo-white.png" alt="Illinois Tech Elevate" style="height:78px;width:auto;align-self:flex-start;margin-bottom:30px">
   <div class="eyebrow reveal">Elevate Workshop 2 of 4 · Career Services and Experiential Learning</div>
   <h1 class="reveal">Ask before you apply.</h1>
@@ -147,28 +214,30 @@
   <div class="eyebrow reveal">The next 45 minutes</div>
   <h2 class="reveal">One conversation, one list, one message.</h2>
   <div class="cols">
-    <div class="box reveal"><p class="stat" style="font-size:clamp(60px,7.5vw,120px)">1<small>Ask for advice, never for a job</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(60px,7.5vw,120px)">5<small>Build a target list of five names today</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(60px,7.5vw,120px)">1<small>Send one message under 100 words this week</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(52px,min(7.5vw,13vh),120px)">1<small>Ask for advice, never for a job</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(52px,min(7.5vw,13vh),120px)">5<small>Build a target list of five names today</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(52px,min(7.5vw,13vh),120px)">1<small>Send one message under 100 words this week</small></p></div>
   </div>
   <p class="lead reveal" style="margin-top:22px">Bring one job title to mind now: the role you would want in two years. Everything today points at that role.</p>
 </section>
 
 <!-- 4 Why -->
 <section class="slide">
-  <div class="eyebrow reveal">0:03 · Why this works</div>
-  <h2 class="reveal">Applications get screened. Conversations get remembered.</h2>
-  <div class="vs">
-    <div class="reveal"><svg class="art" viewBox="0 0 300 200" aria-hidden="true"><circle class="red" cx="150" cy="70" r="26"/><circle class="soft" cx="70" cy="110" r="20"/><circle class="soft" cx="230" cy="110" r="20"/><circle class="soft" cx="110" cy="160" r="16"/><circle class="soft" cx="190" cy="160" r="16"/><path class="redline draw" d="M150 96 L70 110 M150 96 L230 110 M150 96 L110 160 M150 96 L190 160 M70 110 L110 160 M230 110 L190 160"/></svg>
-      <p class="stat" style="font-size:clamp(40px,6vw,88px)">70%<small>of people were hired at a company where they had a connection (LinkedIn survey, 2017)</small></p>
+  <div class="split">
+    <div>
+      <div class="eyebrow reveal">0:03 · Why this works</div>
+      <h2 class="reveal">Applications get screened. Conversations get remembered.</h2>
+      <div class="duo">
+        <div class="box reveal"><svg class="art" viewBox="0 0 60 60" aria-hidden="true"><circle class="red" cx="30" cy="16" r="9"/><circle class="soft" cx="10" cy="34" r="7"/><circle class="soft" cx="50" cy="34" r="7"/><circle class="soft" cx="20" cy="52" r="6"/><circle class="soft" cx="40" cy="52" r="6"/><path class="redline" style="stroke-width:2" d="M30 25 L10 34 M30 25 L50 34 M30 25 L20 52 M30 25 L40 52"/></svg>
+          <p class="stat">70%<small>of people were hired at a company where they had a connection (LinkedIn survey, 2017)</small></p></div>
+        <div class="box reveal"><svg class="art" viewBox="0 0 60 60" aria-hidden="true"><circle class="fill" cx="30" cy="30" r="25"/><circle class="stroke" cx="30" cy="30" r="25"/><path class="redline" d="M30 30 L30 12"/><path class="stroke" d="M30 30 L43 37"/><circle class="red" cx="30" cy="30" r="3"/></svg>
+          <p class="stat">20<span class="unit">min</span><small>is all you ask for. Advice, not a job. People say yes to advice.</small></p></div>
+      </div>
+      <div class="ask reveal">Ask the room</div>
+      <p class="lead reveal" style="margin:0">Name one thing about your target job that no posting will ever tell you.</p>
     </div>
-    <div class="mid reveal">vs.</div>
-    <div class="reveal"><svg class="art" viewBox="0 0 300 200" aria-hidden="true"><circle class="fill" cx="150" cy="100" r="80" stroke="var(--line)"/><circle class="stroke" cx="150" cy="100" r="80"/><path class="redline draw" d="M150 100 L150 40"/><path class="stroke" d="M150 100 L195 125"/><circle class="red" cx="150" cy="100" r="6"/></svg>
-      <p class="stat" style="font-size:clamp(40px,6vw,88px)">20<small style="display:inline;font-size:.4em">min</small><small>is all you ask for. Advice, not a job. People say yes to advice.</small></p>
-    </div>
+    <figure class="photo reveal"><img src="https://images.unsplash.com/photo-1513470270416-d3ff6f16b22f?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8NHx8dHdvJTIwcGVvcGxlJTIwY29mZmVlJTIwY29udmVyc2F0aW9ufGVufDF8MXx8fDE3OTIxNjEyNzV8Mg&ixlib=rb-4.1.0&w=900&q=80&auto=format&fit=crop" alt="Two people talking over coffee at a cafe table"><span class="credit">Photo: <a href="https://unsplash.com/@christinhumephoto?utm_source=elevate_workshops&amp;utm_medium=referral">Christin Hume</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span></figure>
   </div>
-  <div class="ask reveal">Ask the room</div>
-  <p class="lead reveal">Name one thing about your target job that no posting will ever tell you.</p>
 </section>
 
 <!-- 5 Builder -->
@@ -177,6 +246,7 @@
   <h2 class="reveal">Your ask, in two sentences.</h2>
   <div class="cols two">
     <div class="box reveal">
+      <div class="formula"><span class="fx">Formula</span>I'm a <span class="b">year</span> <span class="b">major</span> student at Illinois Tech, and <span class="b">one specific thing you noticed about them</span>. Could I have 20 minutes in the next two weeks to ask about <span class="b">one topic</span>?</div>
       <label>Sentence 1: who you are and why them (one specific reason)</label>
       <input type="text" data-store="ask1" placeholder="I&#x27;m a second-year computer science student at Illinois Tech, and I saw you moved from a co-op at Motorola into security engineering…">
       <label>Sentence 2: the ask (20 minutes, one topic, their convenience)</label>
@@ -189,20 +259,32 @@
 
 <!-- 6 Framework -->
 <section class="slide ink">
+  <div class="split">
+  <div>
   <div class="eyebrow reveal">0:13 · The message shape</div>
   <h2 class="reveal">Who. Why them. What you're asking.</h2>
   <div class="seq" style="max-width:900px"><div class="step reveal"><div class="n">W</div><div><b style="color:#F4F2EC">Who.</b> One line: year, major, Illinois Tech. No life story.</div></div><div class="step reveal"><div class="n">Y</div><div><b style="color:#F4F2EC">Why them.</b> Something specific you noticed: their path, a project, a post. Proof you did not mass-send.</div></div><div class="step reveal"><div class="n">A</div><div><b style="color:#F4F2EC">Ask.</b> Twenty minutes, one topic, in the next two weeks, at their convenience. Never a job, never a résumé review.</div></div></div>
-  <div class="ask reveal" style="margin-top:18px">Ask the room</div>
-  <p class="lead reveal">Call out a person you would message. We write the Why line together on the next slide.</p>
+  <div class="ask reveal" style="margin-top:14px">Ask the room</div>
+  <p class="lead reveal" style="margin:0 0 6px">Call out a person you would message. We write their Why line together:</p>
+  <div class="formula reveal"><span class="fx">Why-line formula</span>I noticed <span class="b">their path, project, post, or talk</span>, and <span class="b">why it matters to you</span>.<span class="eg">e.g. I saw your post about moving from QA into platform engineering, and that is the move I'm hoping to make.</span></div>
+  </div>
+  <figure class="photo reveal" style="box-shadow:none"><img src="https://images.unsplash.com/photo-1695998951936-de1d15da8e56?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8Mnx8c3R1ZGVudCUyMHdyaXRpbmclMjBtZXNzYWdlJTIwb24lMjBsYXB0b3B8ZW58MXwxfHx8MTc5MjE2MTI3Nnwy&ixlib=rb-4.1.0&w=900&q=80&auto=format&fit=crop" alt="A student drafting notes beside a laptop"><span class="credit">Photo: <a href="https://unsplash.com/@reuben_hu?utm_source=elevate_workshops&amp;utm_medium=referral">Reuben Hu</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span></figure>
+  </div>
 </section>
 
 <!-- 7 Examples by field -->
 <section class="slide">
-  <div class="eyebrow reveal">It works in every major</div>
-  <h2 class="reveal">Pick your field.</h2>
-  <div class="tabs reveal" id="tabs"></div>
-  <div class="box reveal" id="tabBody" style="font-size:clamp(17px,1.8vw,25px);font-family:var(--serif);line-height:1.45"></div>
-  <p class="quiet reveal" style="margin-top:14px">Every message names one specific thing about the person. If yours could be sent to anyone, it will be answered by no one.</p>
+  <div class="split">
+    <div>
+      <div class="eyebrow reveal">It works in every major</div>
+      <h2 class="reveal">Pick your field.</h2>
+      <div class="tabs reveal" id="tabs"></div>
+      <div class="box reveal" id="tabBody" style="font-size:clamp(18px,min(1.9vw,3vh),26px);font-family:var(--serif);line-height:1.45;min-height:6.2em;border-left:4px solid var(--accent)"></div>
+      <div class="formula reveal" style="margin-top:14px"><span class="fx">Formula for yours</span>Who: <span class="b">year + major</span>. Why: <span class="b">one specific thing about them</span>. Ask: 20 minutes on <span class="b">one topic</span>.</div>
+      <p class="lead reveal" style="margin-top:6px;font-size:clamp(16px,min(1.6vw,2.5vh),21px)">If yours could be sent to anyone, <b style="color:var(--ink)">it will be answered by no one.</b></p>
+    </div>
+    <figure class="photo reveal"><img src="https://images.unsplash.com/photo-1752650733482-edf0695a7cdf?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8M3x8bWVudG9yJTIwc3R1ZGVudCUyMGNvbnZlcnNhdGlvbiUyMG9mZmljZXxlbnwxfDB8fHwxNzkyMTYxMjc2fDI&ixlib=rb-4.1.0&w=900&q=80&auto=format&fit=crop&crop=faces" alt="Two students talking over a laptop"><span class="credit">Photo: <a href="https://unsplash.com/@silverkblack?utm_source=elevate_workshops&amp;utm_medium=referral">Vitaly Gariev</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span></figure>
+  </div>
 </section>
 
 <!-- 8 Match -->
@@ -213,7 +295,8 @@
     <div class="box reveal">
       <label>Where are you starting from?</label>
       <select id="major" onchange="matchPlatform()"><option value="">Choose…</option><option value="none">I know nobody in my field</option><option value="prof">I know a professor or TA</option><option value="alumni">I have met alumni once</option><option value="family">Family or friends in the industry</option><option value="online">I follow people online</option></select>
-      <div class="preview" id="platformOut" style="margin-top:12px">Pick a starting point to see where to look first.</div>
+      <div class="preview" id="platformOut" style="margin-top:12px;min-height:5.5em">Pick a starting point to see where to look first.</div>
+      <figure class="photo wide" style="margin-top:14px"><img src="https://images.unsplash.com/photo-1738202323669-cb7315ee1bff?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8Nnx8bmV0d29ya2luZyUyMGV2ZW50JTIwaGFuZHNoYWtlfGVufDF8MXx8fDE3OTIxNjEyNzd8Mg&ixlib=rb-4.1.0&w=1000&q=80&auto=format&fit=crop&crop=faces" alt="A small group of people talking together" style="object-position:50% 30%"><span class="credit">Photo: <a href="https://unsplash.com/@brelynkk?utm_source=elevate_workshops&amp;utm_medium=referral">Brelyn Bashrum</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span></figure>
     </div>
     <div class="box reveal" style="text-align:center"><div class="ask">Live poll · Q2</div><p style="margin:0 0 10px">Where will you find your first contact?</p><img src="assets/poll-qr.png" alt="Poll QR" style="width:min(200px,40vw);background:#fff;padding:6px;border-radius:10px"><p class="quiet"><span class="pollShort"></span></p></div>
   </div>
@@ -223,29 +306,35 @@
 <!-- 9 Toggle -->
 <section class="slide">
   <div class="eyebrow reveal">0:26 · The conversation</div>
-  <h2 class="reveal">Twenty minutes, five moves.</h2>
-  <div class="cols two">
+  <h2 class="reveal" style="max-width:none">Twenty minutes, five moves.</h2>
+  <div class="split even" style="align-items:start">
     <div class="reveal">
-      <div class="tl" id="tl"><div></div><div></div><div></div><div></div><div></div></div>
-      <svg class="art" viewBox="0 0 520 170" aria-hidden="true" id="tlart"><path class="stroke" d="M70 60 H450"/><g data-k="open" style="transition:opacity .3s"><circle class="red" cx="70" cy="60" r="16"/><text x="70" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Inter,sans-serif">1</text><text x="70" y="105" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="Inter,sans-serif">Open</text><text x="70" y="126" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="Inter,sans-serif">2 min</text></g><g data-k="story" style="transition:opacity .3s"><circle class="red" cx="165" cy="60" r="16"/><text x="165" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Inter,sans-serif">2</text><text x="165" y="105" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="Inter,sans-serif">Their story</text><text x="165" y="126" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="Inter,sans-serif">6 min</text></g><g data-k="questions" style="transition:opacity .3s"><circle class="red" cx="260" cy="60" r="16"/><text x="260" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Inter,sans-serif">3</text><text x="260" y="105" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="Inter,sans-serif">Your three questions</text><text x="260" y="126" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="Inter,sans-serif">8 min</text></g><g data-k="ask" style="transition:opacity .3s"><circle class="red" cx="355" cy="60" r="16"/><text x="355" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Inter,sans-serif">4</text><text x="355" y="105" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="Inter,sans-serif">The ask</text><text x="355" y="126" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="Inter,sans-serif">3 min</text></g><g data-k="close" style="transition:opacity .3s"><circle class="red" cx="450" cy="60" r="16"/><text x="450" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Inter,sans-serif">5</text><text x="450" y="105" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="Inter,sans-serif">Close and follow up</text><text x="450" y="126" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="Inter,sans-serif">1 min</text></g></svg>
+      <div class="steps" id="steps">
+        <button data-p="open"><span class="n">1</span><span class="t">Open</span><span class="m">2 min</span><span class="meter"><i style="width:10%"></i></span></button>
+        <button data-p="story"><span class="n">2</span><span class="t">Their story</span><span class="m">6 min</span><span class="meter"><i style="width:30%"></i></span></button>
+        <button data-p="questions"><span class="n">3</span><span class="t">Your three questions</span><span class="m">8 min</span><span class="meter"><i style="width:40%"></i></span></button>
+        <button data-p="ask"><span class="n">4</span><span class="t">The ask<span class="key">Key move</span></span><span class="m">3 min</span><span class="meter"><i style="width:15%"></i></span></button>
+        <button data-p="close"><span class="n">5</span><span class="t">Close and follow up</span><span class="m">1 min</span><span class="meter"><i style="width:5%"></i></span></button>
+      </div>
+      <p class="quiet" id="bpHint" style="margin-top:10px">Tap a move. Auto-advances every 6 seconds until you do.</p>
     </div>
-    <div class="reveal">
-      <div class="pages" id="bpTabs"><span data-p="open">Open</span><span data-p="story">Their story</span><span data-p="questions">Your three questions</span><span data-p="ask" class="core">The ask</span><span data-p="close">Close and follow up</span></div>
-      <p class="lead" id="bpTitle" style="margin:14px 0 6px;font-family:var(--serif);font-weight:600">Open</p>
-      <p class="lead" id="bpText" style="margin-top:0">Thank them, restate the one topic, promise to stop at 20 minutes. Thirty seconds, then listen.</p>
-      <p class="quiet" id="bpHint">Tap a stage. Auto-advances every 6 seconds until you do.</p>
+    <div class="detail reveal">
+      <figure class="photo"><img src="https://images.unsplash.com/photo-1604881991405-b273c7a4386a?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8MXx8dHdvJTIwcGVvcGxlJTIwY29mZmVlJTIwY29udmVyc2F0aW9ufGVufDF8MXx8fDE3OTIxNjEyNzV8Mg&ixlib=rb-4.1.0&w=900&q=80&auto=format&fit=crop" alt="Two people with coffee cups talking across a table"><span class="credit top">Photo: <a href="https://unsplash.com/@priscilladupreez?utm_source=elevate_workshops&amp;utm_medium=referral">Priscilla Du Preez</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span></figure>
+      <div class="card2"><h3 id="bpTitle">Open</h3><p class="lead" id="bpText">Thank them, restate the one topic, promise to stop at 20 minutes. Thirty seconds, then listen.</p></div>
     </div>
   </div>
 </section>
 
 <!-- 10 Sources -->
-<section class="slide ink">
+<section class="slide ink has-bg">
+  <div class="bgphoto" style="background-image:linear-gradient(180deg,rgba(18,18,20,.80) 0%,rgba(18,18,20,.93) 55%,rgba(18,18,20,.97) 100%),url('https://images.unsplash.com/photo-1494522855154-9297ac14b55f?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8NXx8Q2hpY2FnbyUyMHNreWxpbmV8ZW58MXwwfHx8MTc5MjE2MTI3OHwy&ixlib=rb-4.1.0&w=1920&q=70&auto=format&fit=crop')"></div>
+  <span class="credit">Photo: <a href="https://unsplash.com/@sawyerbengtson?utm_source=elevate_workshops&amp;utm_medium=referral">Sawyer Bengtson</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span>
   <div class="eyebrow reveal">You know more people than you think</div>
-  <h2 class="reveal">Your network already exists. It just isn't written down.</h2>
+  <h2 class="reveal" style="max-width:26ch">Your network already exists. It just isn't written down.</h2>
   <div class="cols">
-    <div class="box reveal"><p class="stat" style="font-size:clamp(44px,5.2vw,80px)">Class<small>Ask professors, TAs, IPRO teammates, and guest lecturers for one name each</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(44px,5.2vw,80px)">Elevate<small>Apply to the Alumni Mentorship Program; log your conversations in the Informational Interviews elective</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(44px,5.2vw,80px)">Life<small>List family, former managers, coaches, club advisers, and friends' parents</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(38px,min(5.2vw,8.5vh),80px)">Class<small>Ask professors, TAs, IPRO teammates, and guest lecturers for one name each</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(38px,min(5.2vw,8.5vh),80px)">Elevate<small>Apply to the Alumni Mentorship Program; log your conversations in the Informational Interviews elective</small></p></div>
+    <div class="box reveal"><p class="stat" style="font-size:clamp(38px,min(5.2vw,8.5vh),80px)">Life<small>List family, former managers, coaches, club advisers, and friends' parents</small></p></div>
   </div>
   <div class="ask reveal" style="margin-top:18px">Ask the room</div>
   <p class="lead reveal">Name one person you talked to this semester who works somewhere you'd want to work.</p>
@@ -266,7 +355,7 @@
       <div class="seq"><div class="step"><div class="n" style="font-size:22px;min-width:3.2em">8:00</div><div>Pick one name from your target list. Fill the message fields on the <b>Handout</b> page: Who, Why them, Ask, plus three questions you will bring.</div></div><div class="step"><div class="n" style="font-size:22px;min-width:3.2em">3:00</div><div>Swap phones with a neighbor. They read your message as the recipient and answer one question: would I say yes? If not, why not? That answer is your edit.</div></div></div>
     </div>
   </div>
-  <p class="lead reveal" style="margin-top:8px;font-size:clamp(17px,1.8vw,24px)">Under 100 words. Specific Why line. One ask. Send it before Friday.</p>
+  <div class="formula reveal" style="margin-top:8px"><span class="fx">Message formula · under 100 words</span>Hi <span class="b">Name</span>, <span class="b">Who: year, major, Illinois Tech</span> <span class="b">Why them: one specific thing</span> Could I have 20 minutes in the next two weeks to ask about <span class="b">one topic</span>? Happy to work around your schedule. Thank you, <span class="b">your name</span></div>
 </section>
 
 <!-- 12 Checklist -->
@@ -348,7 +437,7 @@ function replay(s){ s.querySelectorAll('.reveal,.draw,.typing,.pages span').forE
 function show(n){ const prev=i; i=Math.max(0,Math.min(slides.length-1,n)); slides.forEach((s,k)=>{s.classList.toggle('on',k===i); s.classList.toggle('back',k===i&&i<prev);}); replay(slides[i]);
   document.getElementById('count').textContent=(i+1)+' / '+slides.length; document.getElementById('prog').style.width=((i+1)/slides.length*100)+'%';
   document.getElementById('notes').innerHTML='<b>Notes</b> · '+NOTES[i]; location.hash='s'+(i+1); sendState();
-  if(slides[i].querySelector('#bpTabs')){bpStart();} else {clearInterval(bpTimer);} }
+  if(slides[i].querySelector('#steps')){bpStart();} else {clearInterval(bpTimer);} }
 const BC = ('BroadcastChannel' in window) ? new BroadcastChannel('pw-deck') : null;
 function titles(){ return slides.map(s=>{ const h=s.querySelector('h1,h2'); return h?h.textContent.trim():'Slide'; }); }
 function sendState(){ if(BC) BC.postMessage({type:'state', i, n:slides.length, titles:titles(), notes:NOTES}); }
@@ -461,11 +550,9 @@ const BP={
  ]
 };
 let bpTimer=null, bpKeys=Object.keys(BP), bpIdx=0;
-function bpShow(k,manual){ bpIdx=bpKeys.indexOf(k); document.querySelectorAll('#tl div').forEach((r,n)=>r.classList.toggle('on',n===bpIdx)); document.querySelectorAll('#tlart g[data-k]').forEach(g=>g.style.opacity=g.dataset.k===k?'1':'.28');
-  document.querySelectorAll('#bpTabs span').forEach(t=>t.classList.toggle('on',t.dataset.p===k));
-  
+function bpShow(k,manual){ bpIdx=bpKeys.indexOf(k); document.querySelectorAll('#steps button').forEach(t=>t.classList.toggle('on',t.dataset.p===k));
   const t=document.getElementById('bpTitle'),x=document.getElementById('bpText'); t.textContent=BP[k][0]; x.textContent=BP[k][1]; [t,x].forEach(el=>{el.style.animation='none'; void el.offsetWidth; el.style.animation='rise .5s var(--ease)';});
-  if(manual){ clearInterval(bpTimer); bpTimer=null; document.getElementById('bpHint').textContent='Tap another page, or press → to move on.'; } }
+  if(manual){ clearInterval(bpTimer); bpTimer=null; document.getElementById('bpHint').textContent='Tap another move, or press → to go on.'; } }
 function bpStart(){ clearInterval(bpTimer); bpShow(bpKeys[0]); bpTimer=setInterval(()=>bpShow(bpKeys[(bpIdx+1)%bpKeys.length]),6000); }
 function matchPlatform(){ const v=document.getElementById('major').value; document.getElementById('platformOut').innerHTML= v?PLAT[v]:"Pick a starting point to see where to look first."; }
 function aboutPrev(){ const a=PW.get('ask1',''),b=PW.get('ask2',''); document.getElementById('aboutPreview').textContent=(a||b)?(a+' '+b).trim():"Your ask will appear here."; }
@@ -474,7 +561,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   Object.keys(EX).forEach(k=>{ const b=document.createElement('button'); b.textContent=k; b.onclick=()=>{[...tabs.children].forEach(x=>x.classList.remove('on')); b.classList.add('on'); body.innerHTML='<p style="margin:0">'+EX[k]+'</p>';}; tabs.appendChild(b); if(first){b.click();first=false;} });
   document.querySelectorAll('[data-store="ask1"],[data-store="ask2"]').forEach(el=>el.addEventListener('input',aboutPrev)); aboutPrev();
   const CF=window.PW_CONFIG||{}; document.getElementById('bookLink').href=CF.bookingUrl||'#'; document.getElementById('checkinShort').textContent=(CF.checkinUrl||'').replace('https://',''); document.getElementById('qaShort').textContent=(CF.qaUrl||'').replace('https://',''); document.querySelectorAll('.pollShort').forEach(e=>e.textContent=(CF.pollUrl||'').replace('https://','')||'poll opens on workshop day');
-  document.querySelectorAll('#bpTabs span').forEach(t=>t.onclick=()=>bpShow(t.dataset.p,true));
+  document.querySelectorAll('#steps button').forEach(t=>t.onclick=()=>bpShow(t.dataset.p,true));
   const ct=document.getElementById('csTabs'); CS.forEach((d,k)=>{const b=document.createElement('button'); b.textContent=d.tab; b.onclick=()=>csShow(k); ct.appendChild(b);}); csShow(0);
   const h=parseInt((location.hash||'').replace('#s',''))||1; show(h-1);
   let x0=null; document.addEventListener('touchstart',e=>x0=e.touches[0].clientX); document.addEventListener('touchend',e=>{ if(x0===null)return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>60)go(dx<0?1:-1); x0=null; });
