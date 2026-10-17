@@ -102,7 +102,7 @@
   .slide .formula{font-size:clamp(14px,min(1.35vw,2.3vh),19px);margin:6px 0 10px}
   .ink .formula{background:#1B1B20;border-color:#2B2B31;border-left-color:#FF4A4A;color:#E8E5DD}.ink .formula .b{background:#2B2B31;color:#C9C6BE}.ink .formula .eg{color:#9A9A9F}
   .slide p.timer{font-size:clamp(44px,min(8vw,13vh),120px);line-height:1;margin:0 0 10px}
-/* 2026-10 QA pass: never clip tall slides, fit short screens, photo layouts */
+/* QA pass: never clip tall slides, fit short screens, photo layouts */
 .slide{justify-content:safe center}
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,34%);gap:clamp(24px,4vw,64px);align-items:center}
 .split.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
@@ -188,8 +188,8 @@
   <h1 class="reveal">Ask before you apply.</h1>
   <p class="lead reveal">Most people get hired where someone already knows them. A twenty-minute conversation is how that starts. In 45 minutes you will have five names and a message ready to send.</p>
   <div class="reveal" style="margin-top:34px;display:flex;gap:34px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.35);padding-top:16px;max-width:760px">
-    <div><div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#FFD2D2">Thursday</div><div style="font-size:clamp(16px,1.6vw,22px);font-weight:600">October 29, 2026 · 12:45 p.m.</div></div>
-    <div><div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#FFD2D2">Where</div><div style="font-size:clamp(16px,1.6vw,22px);font-weight:600">Hermann Hall 010 · Teams</div></div>
+    <div><div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#FFD2D2" data-session="weekday"></div><div style="font-size:clamp(16px,1.6vw,22px);font-weight:600" data-session="datetime"></div></div>
+    <div data-when="upcoming"><div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#FFD2D2">Where</div><div style="font-size:clamp(16px,1.6vw,22px);font-weight:600" data-session="wherex"></div></div>
     <div><div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#FFD2D2">With</div><div style="font-size:clamp(16px,1.6vw,22px);font-weight:600">Freddrick Logan, PhD</div></div>
   </div>
 </section>
@@ -383,7 +383,7 @@
   <div class="eyebrow reveal">Check in for Elevate credit</div>
   <h2 class="reveal" style="max-width:none">People say yes to students who ask well.<br>Ask well.</h2>
   <div class="cols two">
-    <div class="box reveal" style="background:#fff;color:#111;text-align:center;border-color:#fff"><img src="assets/checkin-qr.png" alt="312 check-in QR" style="width:min(240px,55vw)"><p style="color:#111;margin:6px 0 0;font-size:18px"><b>Scan to check in on 312</b><br><span style="font-size:14px;color:#555" id="checkinShort"></span></p></div>
+    <div class="box reveal" style="background:#fff;color:#111;text-align:center;border-color:#fff"><div data-checkin="slide"><img src="assets/checkin-qr.png" alt="312 check-in QR" style="width:min(240px,55vw)"><p style="color:#111;margin:6px 0 0;font-size:18px"><b>Scan to check in on 312</b><br><span style="font-size:14px;color:#555" id="checkinShort"></span></p></div></div>
     <div class="box reveal"><p><b>Then</b></p><p>1. Finish the handout and download it.<br>2. Send one message before Friday.<br>3. Book a one-on-one to review your list.</p><p class="quiet" style="color:#FFD2D2">Career Services and Experiential Learning · MTCC Room 106 · 312.567.6800</p></div>
   </div>
 </section>
@@ -395,7 +395,7 @@
   <div class="cols">
     <div class="box reveal" style="text-align:center"><img src="assets/qa-qr.png" alt="Question form QR" style="width:min(220px,50vw);background:#fff;padding:8px;border-radius:12px"><p style="margin:10px 0 0"><b>Ask or leave feedback</b><br><span class="quiet" id="qaShort"></span></p></div>
     <div class="box reveal" style="text-align:center"><img src="assets/booking-qr.png" alt="Booking QR" style="width:min(220px,50vw);background:#fff;padding:8px;border-radius:12px"><p style="margin:10px 0 0"><b>Book a 30-minute one-on-one</b><br><span class="quiet">Freddrick Logan · Career Services and Experiential Learning</span></p></div>
-    <div class="box reveal" style="text-align:center"><img src="assets/checkin-qr.png" alt="312 check-in QR" style="width:min(220px,50vw);background:#fff;padding:8px;border-radius:12px"><p style="margin:10px 0 0"><b>Check in on 312</b><br><span class="quiet">records your Elevate workshop credit</span></p></div>
+    <div class="box reveal" style="text-align:center"><div data-checkin="slide"><img src="assets/checkin-qr.png" alt="312 check-in QR" style="width:min(220px,50vw);background:#fff;padding:8px;border-radius:12px"><p style="margin:10px 0 0"><b>Check in on 312</b><br><span class="quiet">records your Elevate workshop credit</span></p></div></div>
   </div>
   <p class="lead reveal" style="margin-top:18px">Take your handout with you: download, email, or print it from the Handout page. Send message one this week.</p>
 </section>
@@ -404,7 +404,7 @@
 
 <div class="notes" id="notes"></div>
 <div class="hud">
-  <span><span id="count">1 / 14</span> · © 2026 Freddrick Logan, PhD · <a href="https://fredlogan.phd" style="margin-left:0">fredlogan.phd</a></span>
+  <span><span id="count">1 / 14</span> · © <span data-year></span> Freddrick Logan, PhD · <a href="https://fredlogan.phd" style="margin-left:0">fredlogan.phd</a></span>
   <span><a href="#" onclick="go(-1);return false">◀ Prev</a><a href="#" onclick="go(1);return false">Next ▶</a><a href="#" onclick="toggleNotes();return false">Notes (N)</a><a href="#" onclick="openPresenter();return false">Presenter (P)</a><a href="#" onclick="PW.toggleTheme();return false">Theme (T)</a><a href="index.html">Home</a><a href="handout.html">Handout</a></span>
 </div>
 
