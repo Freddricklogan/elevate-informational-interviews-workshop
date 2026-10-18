@@ -172,6 +172,18 @@
   .slide .cols .box:has(.stat){padding:14px 16px}
 }
 @media (max-width:760px){.split,.split.even,.duo{grid-template-columns:1fr}.photo{max-height:40vh}.detail .card2{position:static;margin-top:10px}.slide > .credit{bottom:52px}}
+
+/* Compact three-up cards: step number, scarlet top rule, large word, one-line description */
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:14px}
+.tcard{background:var(--surface);border:1px solid var(--line);border-top:4px solid #CC0000;border-radius:14px;padding:14px 18px 14px;box-shadow:var(--glow)}
+.ink .tcard{background:#1B1B20;border-color:#2B2B31;border-top-color:#CC0000;color:#D6D3CB}
+.tcard .stepno{display:block;font-size:12px;letter-spacing:2.5px;color:var(--muted);font-weight:700}
+.tcard b{display:block;font-family:var(--serif);font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(26px,min(3vw,5.4vh),46px);line-height:1;color:var(--ink);margin:6px 0 8px}
+.ink .tcard b{color:#F4F2EC}
+.tcard p{margin:0;font-size:clamp(14px,min(1.25vw,2.2vh),18px);line-height:1.35;color:var(--body)}
+.ink .tcard p{color:#D6D3CB}
+@media (max-width:760px){.trio{grid-template-columns:1fr;gap:12px}.tcard b{font-size:28px}}
+@media (max-height:760px){.tcard{padding:10px 14px}.tcard b{margin:4px 0 6px}}
 </style>
 </head>
 <body>
@@ -221,10 +233,10 @@
 <section class="slide ink">
   <div class="eyebrow reveal">The next 45 minutes</div>
   <h2 class="reveal">One conversation, one list, one message.</h2>
-  <div class="cols">
-    <div class="box reveal"><p class="stat" style="font-size:clamp(52px,min(7.5vw,13vh),120px)">1<small>Ask for advice, never for a job</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(52px,min(7.5vw,13vh),120px)">5<small>Build a target list of five names today</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(52px,min(7.5vw,13vh),120px)">1<small>Send one message under 100 words this week</small></p></div>
+  <div class="trio">
+    <div class="tcard reveal"><span class="stepno">01</span><b>Ask</b><p>Ask for advice, never for a job.</p></div>
+    <div class="tcard reveal"><span class="stepno">02</span><b>Five</b><p>Build a target list of five names today.</p></div>
+    <div class="tcard reveal"><span class="stepno">03</span><b>Send</b><p>Send one message under 100 words this week.</p></div>
   </div>
   <p class="lead reveal" style="margin-top:22px">Bring one job title to mind now: the role you would want in two years. Everything today points at that role.</p>
 </section>
@@ -341,10 +353,10 @@
   <span class="credit">Photo: <a href="https://unsplash.com/@sawyerbengtson?utm_source=elevate_workshops&amp;utm_medium=referral">Sawyer Bengtson</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span>
   <div class="eyebrow reveal">You know more people than you think</div>
   <h2 class="reveal" style="max-width:26ch">Your network already exists. It just isn't written down.</h2>
-  <div class="cols">
-    <div class="box reveal"><p class="stat" style="font-size:clamp(38px,min(5.2vw,8.5vh),80px)">Class<small>Ask professors, TAs, IPRO teammates, and guest lecturers for one name each</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(38px,min(5.2vw,8.5vh),80px)">Elevate<small>Apply to the Alumni Mentorship Program; log your conversations in the Informational Interviews elective</small></p></div>
-    <div class="box reveal"><p class="stat" style="font-size:clamp(38px,min(5.2vw,8.5vh),80px)">Life<small>List family, former managers, coaches, club advisers, and friends' parents</small></p></div>
+  <div class="trio">
+    <div class="tcard reveal"><span class="stepno">01</span><b>Class</b><p>Ask professors, TAs, IPRO teammates, and guest lecturers for one name each.</p></div>
+    <div class="tcard reveal"><span class="stepno">02</span><b>Elevate</b><p>Apply to the Alumni Mentorship Program; log your conversations in the Informational Interviews elective.</p></div>
+    <div class="tcard reveal"><span class="stepno">03</span><b>Life</b><p>List family, former managers, coaches, club advisers, and friends' parents.</p></div>
   </div>
   <div class="ask reveal" style="margin-top:18px">Ask the room</div>
   <p class="lead reveal">Name one person you talked to this semester who works somewhere you'd want to work.</p>
