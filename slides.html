@@ -206,6 +206,13 @@
   .hud{flex-wrap:wrap;gap:4px 10px;padding:8px 12px;background:var(--bg);border-top:1px solid var(--line)}
   .accent .hud,.ink .hud{background:var(--bg)}
 }
+
+/* "On the Hub" link chip: scarlet outline, opens the Careers & Elevate Hub in a new tab; sits in flow inside the eyebrow line */
+.hubchip{display:inline-flex;align-items:center;margin-left:12px;vertical-align:middle;padding:3px 11px;border:1.5px solid var(--accent);border-radius:999px;color:var(--accent);background:transparent;font-size:12px;font-weight:700;letter-spacing:.2px;text-transform:none;text-decoration:none;white-space:nowrap;line-height:1.4}
+.slide.ink .hubchip{border-color:#FF4A4A;color:#FF4A4A}
+.slide.accent .hubchip{border-color:#fff;color:#fff}
+.hubchip:hover{background:var(--accent);color:#fff}
+@media (max-width:760px){.hubchip{margin:6px 0 0;white-space:normal}}
 </style>
 </head>
 <body>
@@ -284,7 +291,7 @@
 
 <!-- 5 Builder -->
 <section class="slide">
-  <div class="eyebrow reveal">0:10 · The raw material</div>
+  <div class="eyebrow reveal">0:10 · The raw material <a class="hubchip" href="https://elevate.iit.edu/407244-2/" target="_blank" rel="noopener noreferrer">On the Hub → Informational Interviews</a></div>
   <h2 class="reveal">Your ask, in two sentences.</h2>
   <div class="cols two">
     <div class="box reveal">
@@ -331,7 +338,7 @@
 
 <!-- 8 Match -->
 <section class="slide">
-  <div class="eyebrow reveal">0:18 · Finding your five</div>
+  <div class="eyebrow reveal">0:18 · Finding your five <a class="hubchip" href="https://elevate.iit.edu/407241-2/" target="_blank" rel="noopener noreferrer">On the Hub → Network &amp; Make Connections</a></div>
   <h2 class="reveal">Your people are closer than you think.</h2>
   <div class="cols two">
     <div class="box reveal">
@@ -349,7 +356,7 @@
 
 <!-- 9 Toggle -->
 <section class="slide">
-  <div class="eyebrow reveal">0:26 · The conversation</div>
+  <div class="eyebrow reveal">0:26 · The conversation <a class="hubchip" href="https://elevate.iit.edu/407243-2/" target="_blank" rel="noopener noreferrer">On the Hub → Prepare for Interviews</a></div>
   <h2 class="reveal" style="max-width:none">Twenty minutes, five moves.</h2>
   <div class="split even" style="align-items:start">
     <div class="reveal">
@@ -373,7 +380,7 @@
 <section class="slide ink has-bg">
   <div class="bgphoto" style="background-image:linear-gradient(180deg,rgba(18,18,20,.80) 0%,rgba(18,18,20,.93) 55%,rgba(18,18,20,.97) 100%),url('https://images.unsplash.com/photo-1494522855154-9297ac14b55f?ixid=M3wxMDE3MjIwfDB8MXxzZWFyY2h8NXx8Q2hpY2FnbyUyMHNreWxpbmV8ZW58MXwwfHx8MTc5MjE2MTI3OHwy&ixlib=rb-4.1.0&w=1920&q=70&auto=format&fit=crop')"></div>
   <span class="credit">Photo: <a href="https://unsplash.com/@sawyerbengtson?utm_source=elevate_workshops&amp;utm_medium=referral">Sawyer Bengtson</a> / <a href="https://unsplash.com/?utm_source=elevate_workshops&amp;utm_medium=referral">Unsplash</a></span>
-  <div class="eyebrow reveal">You know more people than you think</div>
+  <div class="eyebrow reveal">You know more people than you think <a class="hubchip" href="https://elevate.iit.edu/resources/illinois-tech-mentorship-program/" target="_blank" rel="noopener noreferrer">On the Hub → Alumni Mentorship Program</a></div>
   <h2 class="reveal" style="max-width:26ch">Your network already exists. It just isn't written down.</h2>
   <div class="trio">
     <div class="tcard reveal"><span class="stepno">01</span><b>Class</b><p>Ask professors, TAs, IPRO teammates, and guest lecturers for one name each.</p></div>
@@ -408,11 +415,11 @@
 
 <!-- 12 Checklist -->
 <section class="slide">
-  <div class="eyebrow reveal">0:41 · Before you leave</div>
+  <div class="eyebrow reveal">0:41 · Before you leave <a class="hubchip" href="https://elevate.iit.edu/407207-2/" target="_blank" rel="noopener noreferrer">On the Hub → Always Follow Up</a></div>
   <h2 class="reveal">What leaves the room with you.</h2>
   <div class="cols two">
     <div class="box reveal"><div class="check"><input type="checkbox" data-store="c1" id="c1"><label for="c1">Draft your two-sentence ask (Who, Why, What)</label></div><div class="check"><input type="checkbox" data-store="c2" id="c2"><label for="c2">List five target names, at least two Illinois Tech alumni</label></div><div class="check"><input type="checkbox" data-store="c3" id="c3"><label for="c3">Write one outreach message under 100 words</label></div><div class="check"><input type="checkbox" data-store="c4" id="c4"><label for="c4">Write three questions a job posting cannot answer</label></div><div class="check"><input type="checkbox" data-store="c5" id="c5"><label for="c5">Set a follow-up date (same day as the conversation)</label></div><div class="check"><input type="checkbox" data-store="c6" id="c6"><label for="c6">Book a one-on-one to review the message before you send it</label></div></div>
-    <div class="box reveal"><p class="quiet" style="margin:0 0 6px">Keep going</p><p>Book a one-on-one: <a id="bookLink" href="#">30 minutes with Career Services</a></p><p><a href="https://elevate.iit.edu/experiences/informational-interviews/">Informational Interviews elective</a> · <a href="https://elevate.iit.edu/resources/illinois-tech-mentorship-program/">Alumni Mentorship Program</a> · <a href="https://illinoistechconnect.iit.edu/">Illinois Tech Connect</a></p></div>
+    <div class="box reveal"><p class="quiet" style="margin:0 0 6px">Keep going</p><p>Book a one-on-one: <a id="bookLink" href="#">30 minutes with Career Services</a></p><p><a href="https://elevate.iit.edu/407244-2/">Informational Interviews guide</a> · <a href="https://elevate.iit.edu/resources/illinois-tech-mentorship-program/">Alumni Mentorship Program</a> · <a href="https://illinoistechconnect.iit.edu/">Illinois Tech Connect</a></p></div>
   </div>
 </section>
 
