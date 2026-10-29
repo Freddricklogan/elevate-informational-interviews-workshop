@@ -31,7 +31,7 @@
     <span class="pill">Last step</span><h2>Before you leave, take it with you</h2>
     <p class="hint" style="margin:0 0 10px">Everything above is saved on this device only. Use the buttons at the top to <b>download</b> it as a text file, <b>email</b> it to yourself or to Freddrick, or <b>print</b> it. Then:</p>
     <div class="check"><input type="checkbox" data-store="c1" id="k1"><label for="k1">Draft your two-sentence ask (Who, Why, What)</label></div><div class="check"><input type="checkbox" data-store="c2" id="k2"><label for="k2">List five target names, at least two Illinois Tech alumni</label></div><div class="check"><input type="checkbox" data-store="c3" id="k3"><label for="k3">Write one outreach message under 100 words</label></div><div class="check"><input type="checkbox" data-store="c4" id="k4"><label for="k4">Write three questions a job posting cannot answer</label></div><div class="check"><input type="checkbox" data-store="c5" id="k5"><label for="k5">Set a follow-up date (same day as the conversation)</label></div><div class="check"><input type="checkbox" data-store="c6" id="k6"><label for="k6">Book a one-on-one to review the message before you send it</label></div>
-    <p style="margin-top:14px"><a class="btn" id="bookBtn" href="#">Book a one-on-one</a> <span data-checkin="btn"><a class="btn ghost" id="checkinBtn" href="#">Check in on 312</a></span></p>
+    <p style="margin-top:14px"><a class="btn" id="exitSurveyBtn" href="https://cglink.me/224/s937" target="_blank" rel="noopener noreferrer">Take the exit survey</a> <a class="btn" id="bookBtn" href="#">Book a one-on-one</a> <span data-checkin="btn"><a class="btn ghost" id="checkinBtn" href="#">Check in on 312</a></span></p>
   </div>
   <div class="card">
     <h2>Keep going on Elevate</h2>
@@ -93,7 +93,7 @@ function msg(){ const g=k=>PW.get(k,'').trim(); const name=g('m_to').split(/[ ,(
   const n=t.split(/\s+/).filter(Boolean).length; wc.textContent='· '+n+' words'+(n>100?' (trim to under 100)':''); wc.className='wc '+(n>100?'over':'ok'); }
 function prev(){ const a=PW.get('ask1',''),b=PW.get('ask2',''); const el=document.getElementById('aboutPreview'); if(el) el.textContent=(a||b)?(a+' '+b).trim():'Your ask will appear here.'; }
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('bookBtn').href=C.bookingUrl; document.getElementById('checkinBtn').href=C.checkinUrl;
+  document.getElementById('bookBtn').href=C.bookingUrl; if(C.exitUrl)document.getElementById('exitSurveyBtn').href=C.exitUrl; document.getElementById('checkinBtn').href=C.checkinUrl;
   document.querySelectorAll('[data-store="ask1"],[data-store="ask2"]').forEach(el=>el.addEventListener('input',prev)); prev();
   document.querySelectorAll('[data-store="m_to"],[data-store="m_who"],[data-store="m_why"],[data-store="m_ask"],[data-store="h_name"]').forEach(el=>el.addEventListener('input',msg)); msg();
   document.querySelectorAll('.fill[data-target]').forEach(b=>b.addEventListener('click',()=>{ const el=document.querySelector('[data-store="'+b.dataset.target+'"]'); if(!el) return;

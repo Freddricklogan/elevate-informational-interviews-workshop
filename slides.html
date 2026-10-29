@@ -427,7 +427,9 @@
 <section class="slide">
   <div class="eyebrow reveal">0:43 · Exit questions · two minutes</div>
   <h2 class="reveal" style="max-width:none">Four quick answers before you go.</h2>
-  <div class="box reveal" style="margin-top:14px">
+  <div class="cols two" style="margin-top:14px;align-items:center">
+  <div class="box reveal">
+    <p class="quiet" style="margin:0 0 8px">Answer these in the exit survey</p>
     <ol class="steps3">
       <li>Explain what an informational interview is.</li>
       <li>Write the first line of your outreach message.</li>
@@ -435,6 +437,8 @@
       <li>What is one question you&rsquo;ll ask that a posting can&rsquo;t answer?</li>
     </ol>
     <p style="margin:16px 0 0"><a class="btn" id="exitBtn" href="#" target="_blank" rel="noopener noreferrer" hidden>Open the exit survey &rarr;</a></p>
+  </div>
+  <div class="box reveal" style="text-align:center"><div class="qrcard" style="--qr:min(300px,40vh)"><img src="assets/exit-qr.png" alt="Exit survey QR code"><span class="lbl">Exit survey</span><span class="sub" id="exitShort">cglink.me/224/s937</span><span class="sub">Two minutes · scan with your phone camera</span></div></div>
   </div>
 </section>
 
@@ -444,7 +448,7 @@
   <h2 class="reveal" style="max-width:none">People say yes to students who ask well.<br>Ask well.</h2>
   <div class="cols two">
     <div class="box reveal" style="text-align:center"><div data-checkin="slide"><div class="qrcard" style="--qr:min(300px,40vh)"><img src="assets/checkin-qr.png" alt="312 check-in QR"><span class="lbl">Check in on 312</span><span class="sub" id="checkinShort"></span></div></div></div>
-    <div class="box reveal"><p><b>Then</b></p><p>1. Finish the handout and download it.<br>2. Send one message before Friday.<br>3. Book a one-on-one to review your list.</p><p class="quiet" style="color:#FFD2D2">Career Services and Experiential Learning · MTCC Room 106 · 312.567.6800</p></div>
+    <div class="box reveal"><p><b>Then</b></p><p>1. Take the exit survey (two minutes).<br>2. Finish the handout and download it.<br>3. Send one message before Friday.<br>4. Book a one-on-one to review your list.</p><p class="quiet" style="color:#FFD2D2">Career Services and Experiential Learning · MTCC Room 106 · 312.567.6800</p></div>
   </div>
 </section>
 
@@ -484,7 +488,7 @@ const NOTES = [
  "Ask the question on the slide. Name the Elevate pieces explicitly: the Informational Interviews elective counts toward the checklist, and the Alumni Mentorship Program takes applications in the fall.",
  "Start the 8-minute timer. Walk the room. Push on the Why line. At 8:00, start the 3-minute swap: would I say yes?",
  "Checklist: read it fast. Point to the booking link; offer to read their message before they send it.",
- "Two minutes, phones out. Read the four questions once; these match the Career Services exit survey. If the survey link is set in config.js, the button opens it.",
+ "Two minutes, phones out. Leave the exit survey QR up (cglink.me/224/s937). Read the four questions once; they are the Career Services exit survey questions, plus a helpfulness rating and comments. Do not advance until most phones are down.",
  "Leave the QR up. Check-in on 312 is what records the Elevate workshop credit.",
  "Open the Forms Responses tab or project the question board from the presenter view. Answer what you can live; follow up by email for the rest. Point to the booking QR for the one-on-one."
 ];
@@ -662,6 +666,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   let x0=null; document.addEventListener('touchstart',e=>x0=e.touches[0].clientX); document.addEventListener('touchend',e=>{ if(x0===null)return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>60)go(dx<0?1:-1); x0=null; });
 });
 </script>
-<script>(function(){var u=(window.PW_CONFIG||{}).exitUrl;var a=document.getElementById("exitBtn");if(u&&a){a.href=u;a.hidden=false;}})();</script>
+<script>(function(){var u=(window.PW_CONFIG||{}).exitUrl;var a=document.getElementById("exitBtn");if(u&&a){a.href=u;a.hidden=false;}var s=document.getElementById("exitShort");if(u&&s)s.textContent=u.replace("https://","");})();</script>
 </body>
 </html>
